@@ -18,3 +18,6 @@ Explanation of the exact dual mode of operation and what it is and why it is nee
 
 TYPES OF OS
 - https://d3s.mff.cuni.cz/files/teaching/nswi004/text/ch01s03s06.html
+
+System callssssssssssssssssssssss
+https://www.csl.mtu.edu/cs4411.ck/www/NOTES/process/fork/create.html
