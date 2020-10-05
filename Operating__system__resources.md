@@ -16,3 +16,5 @@ Explanation of the exact dual mode of operation and what it is and why it is nee
 - Trap or interrupts always go to the same place in the interrupt vector after which it is mapped to the place where it was called from
 - http://boron.physics.metu.edu.tr/ozdogan/OperatingSystems/ceng328/node48.html
 
+TYPES OF OS
+- https://d3s.mff.cuni.cz/files/teaching/nswi004/text/ch01s03s06.html
