@@ -4,8 +4,6 @@
 
 #b = [None, 1,2,3,4,5,6,7]
 
-array = 
-
 #This is the representation of a heap
 a = b[1:]
 from math import ceil, log
