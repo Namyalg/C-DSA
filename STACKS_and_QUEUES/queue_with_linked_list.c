@@ -95,9 +95,9 @@ int main(){
    insert(70);
    insert(80);
    display();
-   dltfrnt();
-   dltfrnt();
-   dltfrnt();
+   dltend();
+   dltend();
+   dltend();
    display();
 
    

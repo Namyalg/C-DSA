@@ -1,7 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-struct Node{
+//(q -> next)->next means one before the end, u are ending at
+//This points to the last poninter
+struct Node {
     Node* prev;
     int data;
     Node* next;
@@ -12,6 +14,7 @@ struct Node{
 //
 Node* head = NULL;
 Node* tail = NULL;
+Node* m;
 Node* getnode(int val){
     Node* temp = (Node*)malloc(1*sizeof(Node));
     temp->prev = NULL;
@@ -34,13 +37,13 @@ void insertfrnt(int val){
         //head = temp;
 
     }
-
 }
 
 void insertend_with1ptr(int val){
     Node* temp = getnode(val);
     if(head == NULL){
         head = temp;
+        m = temp;
     }
     else{
         temp->prev = head;
@@ -61,10 +64,32 @@ void insertend_with2ptr(int val){
         tail = temp;
     }
 }
+void dlt_with_1ptr(){
+    if(head == NULL){
+        printf("%s\n", "Empty ");
+    }
+    else if(head -> next == NULL){
+        free(head);
+        head = NULL;
+    }
+    else{
+        Node* traverse = m;
+        printf("%d" , traverse->data);
+        /*while(traverse->next != NULL){
+            traverse = traverse -> next;
+        }
+        //Node* l = traverse->next;
+        traverse->next = NULL;
+        free(traverse->next);
+        //l -> prev = NULL;
+        //free(l);*/
+    }
+}
 
 void dltfront(){
     if(head == NULL){
         printf("%s", "Empty ");
+        exit(0);
     }
     else if(head -> next == NULL){
         free(head);
@@ -78,9 +103,30 @@ void dltfront(){
         free(t);
     }
 }
+
+void dltinend(){
+    if(head == NULL){
+        printf("%s" , "Empty");
+    }
+    else if(head -> next == NULL){
+        free(head);
+        head = NULL;
+    }
+    else{
+        Node* move = head;
+        while((move -> next)->next != NULL){
+            move = move -> next;
+        }
+        Node* last = move -> next;
+        move -> next = NULL;
+        free(last);
+
+    }
+}
 void dltend(){
     if(head == NULL){
         printf("%s", "Empty ");
+        exit(0);
     }
     else if(head -> next == NULL){
         free(head);
@@ -100,12 +146,13 @@ void dltend(){
 
 }
 void display(){
-    Node* move = head;
+    Node* move = m;
     printf("%s\n", "Contents");
     while(move != NULL){
         printf("%d " , move->data);
         move = move -> next;
     }
+    printf("\n");
 }
 int main(){
     int ch;
@@ -117,13 +164,16 @@ int main(){
                     int el;
                     printf("Enter element \n");
                     scanf("%d" , &el);
-                    insertend_with2ptr(el);
+                    insertfrnt(el);
+                    //insertend_with2ptr(el);
                     display();
                     break;
                 }
             case 2:{
                    
-                       dltfront();
+                       //dltfront();
+                       //dlt_with_1ptr();
+                       dltinend();
                        display();
                        break;
             }
@@ -136,5 +186,3 @@ int main(){
     return 0;
 }
 
-
-:wq
