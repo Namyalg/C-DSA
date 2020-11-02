@@ -5,7 +5,7 @@ struct Node{
     int msg;
     Node* next;
 }*head = NULL;
-
+//need to change the integer to string
 //Add to the end and delete from the front
 
 Node* getnode(int msg){
