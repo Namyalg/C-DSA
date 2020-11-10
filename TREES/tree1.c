@@ -17,24 +17,6 @@ struct TreeNode* getnode(int val){
     return(newn);
 }
 
-struct TreeNode* insertIntoBT(struct TreeNode* root, int val){
-    struct TreeNode* newn = getnode(val);
-    if(root == NULL){
-        root  = newn;
-    }
-    else{
-        if(root -> val >= val){
-            root-> left = insertIntoBT(root -> left, val);
-        }
-        else{
-            root-> right= insertIntoBT(root -> right, val);
-        }
-    }
-    return root;
-}
-
-
-
 struct TreeNode* insertIntoBST(struct TreeNode* root, int val){
     struct TreeNode* newn = getnode(val);
     struct TreeNode* store = root;
@@ -60,7 +42,7 @@ struct TreeNode* insertIntoBST(struct TreeNode* root, int val){
                 else{
                     root -> right = newn;
                     break;
-                }
+                }i
             }
         }
         return(store);
@@ -79,11 +61,11 @@ void postOrder(struct TreeNode* root){
 
 int main(){
     //TreeNode* root == NULL;
-    root = insertIntoBT(root, 24);
-    root = insertIntoBT(root, 2);
-    root = insertIntoBT(root, 4);
-    root = insertIntoBT(root, 243);
-    root = insertIntoBT(root, 43);
+    root = insertIntoBST(root, 24);
+    root = insertIntoBST(root, 2);
+    root = insertIntoBST(root, 4);
+    root = insertIntoBST(root, 243);
+    root = insertIntoBST(root, 43);
     printf("Here in the main\n");
     postOrder(root);
     return 0;

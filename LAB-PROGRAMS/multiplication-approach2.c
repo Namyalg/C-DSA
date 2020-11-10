@@ -103,8 +103,7 @@ Node* multiply(Node* poly1, Node* poly2){
         return result;
     }
 }
-
-Node* remove_dup(Node* head){
+/*Node* remove_dup(Node* head){
     if(head == NULL){
         return(head);
     }
@@ -139,6 +138,54 @@ Node* remove_dup(Node* head){
     }
 
 }
+Node* remove_dup(Node* head){
+    if(head == NULL){
+        return(head);
+    }
+    else if(head -> next == NULL){
+        return(head);
+    }
+    else if(head -> next -> next == NULL){
+        Node* t1 = head -> next;
+        if(t1 -> exp == head -> exp){
+            head -> coeff += t1-> coeff;
+            head -> next = NULL;
+            free(t1);
+        }
+        return head;
+    }
+    else{
+        Node* st = head;
+        Node* t1 = head;
+        Node* t2 = head -> next;
+        while(st != NULL){
+            if(t2 -> exp != st -> exp){
+                t1 = t1 -> next;
+                t2 = t2 -> next;
+            }
+            else{
+                t1 -> next = t2 -> next;
+                t2 -> next = t1 -> next;
+            }
+            st = st -> next;
+        }
+        return head;
+    }
+
+}*/
+Node remove_dup(Node* head){
+    if(head == NULL){
+        return head;
+    }
+    else{
+        Node* st1 = head;
+        Node* st2;
+        Node* t = head;
+        while(t != NULL){
+            
+        }
+    }
+}
 Node* reverse_result(Node* res){
     if(res == NULL){
         return res;
@@ -169,9 +216,9 @@ int main(){
     display(poly2);
     printf("\n");
     result = remove_dup(multiply(poly1, poly2));
-    Node* rev_res = reverse_result(result);
-    printf("Result is : ");
-    display(rev_res);
+    //Node* rev_res = reverse_result(result);
+    //printf("Result is : ");
+    display(result);
     printf("\n");
     return 0;
 }

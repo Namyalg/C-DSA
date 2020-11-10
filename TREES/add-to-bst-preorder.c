@@ -48,14 +48,13 @@ struct TreeNode* insertIntoBST(struct TreeNode* root, int val){
         return(store);
     }
 }
-void postOrder(struct TreeNode* root){
+void preOrder(struct TreeNode* root){
     if(root == NULL){
         return;
     }
-    postOrder(root -> left);
-    postOrder(root -> right);
     printf("%d ", root -> val);
-   
+    preOrder(root -> left);
+    preOrder(root -> right);   
 }
 
 
@@ -67,6 +66,6 @@ int main(){
     root = insertIntoBST(root, 243);
     root = insertIntoBST(root, 43);
     printf("Here in the main\n");
-    postOrder(root);
+    preOrder(root);
     return 0;
 }

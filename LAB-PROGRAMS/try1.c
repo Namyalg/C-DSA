@@ -2,20 +2,20 @@
 #include<stdlib.h>
 
 struct Node{
-    int msg;
+    char* msg;
     Node* next;
 }*head = NULL;
 //need to change the integer to string
 //Add to the end and delete from the front
 
-Node* getnode(int msg){
+Node* getnode(char msg[]){
     Node* newn = (Node*)malloc(1*sizeof(Node*));
     newn -> msg = msg;
     newn -> next = newn;
     return newn;
 }
 
-void enqueue(int msg){
+void enqueue(char msg[]){
     Node* newn = getnode(msg);
     if(head == NULL){
         head = newn;
@@ -33,14 +33,14 @@ void dequeue(){
     }
     else if(head -> next == head){
         printf("The message that will be deleted is ");
-        printf("%d\n", head -> msg);
+        printf("%s\n", head -> msg);
         free(head);
         head = NULL;
     }
     else{
         Node* start = head -> next;
          printf("The message that will be deleted is ");
-         printf("%d\n",  start -> msg);
+         printf("%s\n",  start -> msg);
          head -> next = start -> next;
         free(start);
         start = NULL;
@@ -53,18 +53,14 @@ void display(){
     }
     else{
         Node* start = head -> next;
-         if(start -> next == head){
-            printf("The only message in the queue is : ");
-            printf("%d\n", start->msg);
-        }
-        else{
+   
             printf("The messages in the queue are\n");
             while(start != head){
-                printf("%d ", start -> msg);
+                printf("%s ", start -> msg);
                 start = start -> next;
             }
-            printf("%d\n" , start -> msg);
-        }
+            printf("%s\n" , start -> msg);
+        
     }
 }
 int main(){
@@ -79,9 +75,9 @@ int main(){
         scanf("%d", &choice);
         switch(choice){
             case 1:{
-                int message;
+                char message[1000];
                 printf("Enter the message : ");
-                scanf("%d", &message);
+                scanf("%s", message);
                 enqueue(message);
                 break;
             }

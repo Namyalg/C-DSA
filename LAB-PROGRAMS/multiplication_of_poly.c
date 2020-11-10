@@ -1,5 +1,5 @@
 //multiplication of polynomials
-
+//This works perfectly for all situations
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -100,7 +100,6 @@ Node* multiply(Node* poly1, Node* poly2){
             }
             poly1 = poly1 -> next;
         }
-
         return result;
     }
 }

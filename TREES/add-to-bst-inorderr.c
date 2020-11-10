@@ -1,3 +1,6 @@
+
+//IN INORDER TRAVERSAL, U GET THE ARRAY IN ASCENDING ORDER - >
+
 /**
  * Definition for a binary tree node.*/
 #include<stdio.h>
@@ -48,14 +51,14 @@ struct TreeNode* insertIntoBST(struct TreeNode* root, int val){
         return(store);
     }
 }
-void postOrder(struct TreeNode* root){
+void inOrder(struct TreeNode* root){
     if(root == NULL){
         return;
     }
-    postOrder(root -> left);
-    postOrder(root -> right);
+    inOrder(root -> left);
     printf("%d ", root -> val);
-   
+    inOrder(root -> right);
+     
 }
 
 
@@ -67,6 +70,6 @@ int main(){
     root = insertIntoBST(root, 243);
     root = insertIntoBST(root, 43);
     printf("Here in the main\n");
-    postOrder(root);
+    inOrder(root);
     return 0;
 }
