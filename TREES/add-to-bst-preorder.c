@@ -62,7 +62,7 @@ int main(){
     //TreeNode* root == NULL;
     root = insertIntoBST(root, 24);
     root = insertIntoBST(root, 2);
-    root = insertIntoBST(root, 4);
+    root = insertIntoBST(root, 24);
     root = insertIntoBST(root, 243);
     root = insertIntoBST(root, 43);
     printf("Here in the main\n");

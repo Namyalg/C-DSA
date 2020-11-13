@@ -26,12 +26,13 @@ Node* getnode(int coeff, int exp){
 Node* create(){
     Node* head = NULL;
     int n;
+    printf("****************************************\n");
     printf("Enter the powers from highest to lowest\n");
     printf("Enter number of terms : ");
     scanf("%d" , &n);
     while(n--){
         int coeff, exp;
-        printf("Enter the coeff : ");
+        printf("Enter the coefficient : ");
         scanf("%d" , &coeff);
         printf("Enter the exponent : ");
         scanf("%d" , &exp);
@@ -53,10 +54,39 @@ void display(Node* poly){
         printf("Empty polynomial !\n");
     }
     while(tr -> next != NULL){
-        printf("%dx%d + " ,  tr -> coeff, tr -> exp);
+        if(tr -> coeff < 0){
+          printf(" %dx%d " ,  tr -> coeff, tr -> exp);
+        }
+        else if(tr -> exp == 0){
+            if(tr -> coeff < 0){
+                printf(" %d", tr->coeff);
+            }
+            else{
+                printf(" +%d", tr->coeff);   
+            }
+
+        }
+        else
+        {
+              printf(" +%dx%d " ,  tr -> coeff, tr -> exp);
+        }
+        
         tr = tr -> next;
     }
-    printf("%dx%d" , tr -> coeff , tr -> exp);
+    if(tr -> coeff < 0)
+    printf(" %dx%d " , tr -> coeff , tr -> exp);
+     else if(tr -> exp == 0){
+            if(tr -> coeff < 0){
+                printf(" %d", tr->coeff);
+            }
+            else{
+                printf(" +%d", tr->coeff);   
+            }
+
+        }
+    else{
+          printf(" +%dx%d " ,  tr -> coeff, tr -> exp);
+    }
 }
 //--------------------------------------------------------------------------------
 
@@ -130,21 +160,30 @@ int main(){
     struct Node* poly1 = NULL;
     struct Node* poly2 = NULL;
     struct Node* result = NULL;
+    printf("*********************\n");
     printf("Enter polynomial 1\n");
     poly1 = reverse_result(create());
+    printf("*********************\n");
     printf("Enter polynomial 2\n");
     poly2 = reverse_result(create());
+    printf("**********************************************************************************\n");
     printf("Polynomial 1 is : ");
     display(poly1);
-    printf("\n");    
+    printf("\n");
+    printf("**********************************************************************************\n");
     printf("Polynomial 2 is  : ");
     display(poly2);
-    printf("\n");
+    printf("\n**********************************************************************************\n");
     result = multiply(poly1, poly2);
-    Node* rev_res = reverse_result(result);
-    printf("Result is : ");
-    display(rev_res);
-    printf("\n");
+    if (result == NULL){
+        printf("Cannot perform multiplication!");
+    }
+    else{
+        Node* rev_res = reverse_result(result);
+        printf("Result is : ");
+        display(rev_res);
+        printf("\n**********************************************************************************\n");
+    }
     return 0;
 }
 

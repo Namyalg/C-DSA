@@ -140,6 +140,28 @@ void inorder(Node* root){
 //get leaf nodes
 //get non leaf nodes
 //get totalnumbe rof nodes
+int front = 0;
+int rear = 0;
+int q[20];
+int dq(){
+    int st = front;
+    front += 1;
+    return q[st];
+}
+void eq(int val){
+    q[rear] = val;
+    rear += 1;
+}
+void bfs(Node* root){
+    eq(root -> d);
+    while(front != rear){
+        int f = dq();
+        printf("%d " , f);
+        root = root -> lc;
+        eq(root -> lc -> d);
+        eq(root -> rc -> d);
+    }
+}
 int main(){
     //k array tree, means number of children a node can have
     //2 array tree, 3 array tree, n array tree or arrayness
@@ -165,4 +187,5 @@ int main(){
     for(int i = 0; i < 5; i++){
         printf("%d ", arr[i]);
     }
+    //bfs(root);
 }
