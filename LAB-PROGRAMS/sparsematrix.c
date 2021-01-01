@@ -30,13 +30,15 @@ void insert(Node** head, int r, int c, int val){
     }
 }
 void display(Node* head){
+    printf("\n");
     while(head!= NULL){
-        printf("Row %d \n", head -> r);
-        printf("Column %d \n", head -> c);
+        printf("Row %d ", head -> r);
+        printf("Column %d ", head -> c);
         printf("Value %d \n", head -> val);
         head = head -> next;
     }
 }
+//based on 1 indexing it is used here
 int main(){
     int rows, columns;
     Node* head = NULL;
@@ -54,31 +56,34 @@ int main(){
     printf("************************************\n");
     printf("INSTRUCTIONS \n");
     printf("************************************\n");
-    printf("\nEnter a row between 0 and %d \n" , rows - 1);
-    printf("Enter a column between 0 and %d \n\n", columns - 1);
+    printf("\nEnter a row between 1 and %d \n" , rows);
+    printf("Enter a column between 1 and %d \n\n", columns );
     while(non_zero--){
         int r, c, val;
         printf("Enter the row, column and value : ");
         scanf("%d%d%d", &r, &c, &val);
-        if(r >= rows || c >= columns){
+        if(r > rows || c > columns || c < 1 || r < 1){
             printf("INVALID INDEX \n");
             printf("************************************\n");
-            printf("Enter a row between 0 and %d", rows - 1);
-            printf("\nEnter a column between 0 and %d \n", columns - 1);
+            printf("Enter a row between 1 and %d", rows );
+            printf("\nEnter a column between 1 and %d \n", columns);
             printf("************************************\n\n");
             non_zero = non_zero + 1;
         }
         else{
-            insert(&head, r, c, val);
+            insert(&head, r-1, c-1, val);
         }
     }
+    printf("The contents of the doubly-linked list are : \n");
+    display(head);
+    struct Node* move = head;
+    
     printf("*********************************************\n");
     printf("\n This is the sparse matrix \n");
-    struct Node* move = head;
+
     printf("\n");
     int present = 0;
     for(int i = 0 ; i < rows; i++){
-        
         for(int j = 0; j < columns; j++){
             present = 0;
             while(move != NULL){
@@ -95,7 +100,7 @@ int main(){
             }
         }
         printf("\n");
-    }
+        }
     }
     return 0;
 }
