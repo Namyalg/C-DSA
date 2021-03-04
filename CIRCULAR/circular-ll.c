@@ -6,12 +6,14 @@ struct Node{
     Node* next;
 };
 Node* head = NULL;
+
 Node* getnode(int val){
     Node* temp = (Node*)malloc(1*sizeof(Node));
     temp->data = val;
     temp->next = temp;
     return(temp);
 }
+
 void dltfromend(){
     if(head == NULL){
      printf("%s ", "Empty");
@@ -47,6 +49,7 @@ void dltfromstart(){
         free(temp);
     }
 }
+
 void insert(int val){
     Node* temp = getnode(val);
     if (head == NULL){

@@ -31,10 +31,11 @@ void insert(Node** head, int r, int c, int val){
 }
 void display(Node* head){
     printf("\n");
+    printf("Row     Column      Value\n");
     while(head!= NULL){
-        printf("Row %d ", head -> r);
-        printf("Column %d ", head -> c);
-        printf("Value %d \n", head -> val);
+        printf("%d ", head -> r + 1);
+        printf("        %d ", head -> c + 1);
+        printf("        %d \n", head -> val);
         head = head -> next;
     }
 }
@@ -74,6 +75,7 @@ int main(){
             insert(&head, r-1, c-1, val);
         }
     }
+    printf("\n************************************************\n");
     printf("The contents of the doubly-linked list are : \n");
     display(head);
     struct Node* move = head;
@@ -82,15 +84,21 @@ int main(){
     printf("\n This is the sparse matrix \n");
 
     printf("\n");
+    int check[rows][columns];
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < columns; j++){
+            check[i][j] = 0;
+        }
+    }
     int present = 0;
     for(int i = 0 ; i < rows; i++){
         for(int j = 0; j < columns; j++){
             present = 0;
             while(move != NULL){
-                if(move -> r == i && move -> c == j){
+                if(move -> r == i && move -> c == j && check[i][j] == 0){
                     present = 1;
+                    check[i][j] = 1;
                     printf("%d ", move -> val);
-                    //printf("%d %d %d\n", i ,j , move -> val);
                 }
                 move = move -> next;
             }

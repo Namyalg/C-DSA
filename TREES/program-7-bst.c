@@ -78,20 +78,21 @@ void postOrder(struct TreeNode* root){
     postOrder(root -> right);
     printf("%d ", root -> val);
 }
-int search(struct TreeNode* root, int val){
+int present = 0;
+TreeNode* search(struct TreeNode* root, int val){
     if(root == NULL){
-        return -1;
-    }
-    if(root -> val == val){
-        return 1;
-    }
-    else if(root -> val > val){
-        search(root -> left, val);
-    }
-    else{
-        search(root -> right, val);
-    }
-    return -1;
+            return NULL;
+        }
+        if(root -> val == val){
+            return root;
+        }
+        if(root -> val >= val){
+            root = search(root -> left, val);
+        }
+        else if(root -> val < val){
+            root = search(root -> right, val);
+        }
+        return root;
 }
 int countNode(TreeNode* root){
    
@@ -175,11 +176,11 @@ int main(){
             }
             case 5:{
                 int val;
-                int present;
+                TreeNode* present;
                 printf("Enter the value to be searched for \n");
                 scanf("%d", &val);
                 present = search(root, val);
-                if(present){
+                if(present != NULL){
                     printf("Value is found in the BST \n");
                 }
                 else{

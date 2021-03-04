@@ -71,9 +71,6 @@ int main(){
         insertfrnt(&head, x);
     }
     deletedup(head);
-    //insertbk(head, 200);
-    //insertfrnt(&head, 89);
-    //insertfrnt(&head, 78);
     display(head);
     return 0;
 }
