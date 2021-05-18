@@ -4,30 +4,29 @@
 using namespace std;
 
 unordered_set<int> vis;
-vector<int> depthfirst;
+vector<int> breadthfirst;
 unordered_map<int, vector<int>> adj;
 
-void dfs(int src){
-    vis.insert(src);
-    for(auto x : adj[src]){
-        if(vis.find(x) == vis.end()){
-            vis.insert(x);
-            depthfirst.push_back(x);
-            dfs(x);
-        }
-    }
-}
-
-void bfs(unordered_map<int, vector<int>>){
+void bfs(int src){
 
     queue<int> q;
     //use a queue and do it, its easy
-    q.push(
+    q.push(src);
+    while (q.size() > 0){
+        int s = q.front();
+        q.pop();
+        vis.insert(s);
+        for(auto y : adj[s]){
+            if(vis.find(y) == vis.end()){
+                vis.insert(y);
+                breadthfirst.push_back(y);
+                q.push(y);
+            }
+        }
+        
+    }
 
 }
-
-
-
 
 int main(){
     int edges;
@@ -44,7 +43,7 @@ int main(){
     }
     vector<int> vertices;
     for(auto x : adj){
-        cout<<"Edge is "<<x.first<<endl;
+        //cout<<"Edge is "<<x.first<<endl;
         vertices.push_back(x.first);
         for(auto y : x.second){
             cout<<y<<" ";
@@ -59,11 +58,11 @@ int main(){
         if(vis.find(x) == vis.end()){
             vis.insert(x);
             cout<<"Going in at "<<x<<endl;
-            depthfirst.push_back(x);
-            dfs(x);
+            breadthfirst.push_back(x);
+            bfs(x);
         }
     }
-    for(auto x : depthfirst){
+    for(auto x : breadthfirst){
         cout<<x<<" ";
     }
     return 0;
